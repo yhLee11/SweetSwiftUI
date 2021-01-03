@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+extension Product: Decodable{}
+
 struct Product {
     let name: String
     let imageName: String
