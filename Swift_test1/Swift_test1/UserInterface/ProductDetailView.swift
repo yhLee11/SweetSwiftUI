@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductDetailView: View {
     let product: Product//property for product information
+    @State private var quantity: Int = 1
     var body: some View {
         VStack(spacing:0){
             productImage
@@ -68,13 +69,17 @@ var productDescription: some View{
 
  
 var priceInfo: some View {
-    HStack {
+    let price = quantity*product.price
+    
+    return HStack {
       (Text("₩")
-        + Text("\(product.price)").font(.title)
+        + Text("\(price)").font(.title)
         ).fontWeight(.medium)
         Spacer()
+        QuantitySelector(quantity: $quantity)
     }
     .foregroundColor(.black)
+    
 }
     
   var placeOrderButton: some View {
